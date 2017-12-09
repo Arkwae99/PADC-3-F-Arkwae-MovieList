@@ -79,9 +79,10 @@
                   android:layout_width="150dp"
                   android:layout_height="37dp"
                   android:layout_alignBottom="@id/iv_forest_gump"
+                  android:layout_alignParentRight="true"
                   android:layout_marginBottom="4dp"
                   android:layout_marginLeft="111dp"
-                  android:layout_toEndOf="@id/iv_forest_gump"
+                  android:layout_marginRight="6dp"
                   android:background="@drawable/button"
                   android:foreground="@drawable/ripple_white"
                   android:padding="8dp"
@@ -94,7 +95,6 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_alignLeft="@id/iv_forest_gump"
-                  android:layout_marginTop="14dp"
                   android:src="@drawable/ic_favorite_orange_36dp" />
 
               <TextView
@@ -117,9 +117,7 @@
                   android:layout_height="wrap_content"
                   android:layout_alignBottom="@id/iv_forest_gump"
                   android:layout_alignRight="@id/iv_forest_gump"
-                  android:layout_marginBottom="15dp"
                   android:src="@drawable/ic_fullscreen_white_24dp" />
-
 
 
           </RelativeLayout>
@@ -193,7 +191,8 @@
                   android:layout_alignBottom="@id/iv_bs"
                   android:layout_marginBottom="4dp"
                   android:layout_marginLeft="111dp"
-                  android:layout_toEndOf="@id/iv_bs"
+                  android:layout_alignParentRight="true"
+                  android:layout_marginRight="6dp"
                   android:background="@drawable/button"
                   android:foreground="@drawable/ripple_white"
                   android:padding="8dp"
@@ -206,7 +205,7 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_alignLeft="@id/iv_bs"
-                  android:layout_marginTop="14dp"
+
                   android:src="@drawable/ic_favorite_orange_36dp" />
 
               <TextView
@@ -219,7 +218,7 @@
                   android:layout_alignTop="@id/iv_heart1"
                   android:gravity="center"
                   android:padding="2dp"
-                  android:text="4.5"
+                  android:text="5"
                   android:textColor="#ffffff"
                   android:textSize="12sp" />
               <ImageView
@@ -228,7 +227,7 @@
                   android:layout_height="wrap_content"
                   android:layout_alignBottom="@id/iv_bs"
                   android:layout_alignRight="@id/iv_bs"
-                  android:layout_marginBottom="15dp"
+
                   android:src="@drawable/ic_fullscreen_white_24dp" />
 
 
@@ -303,7 +302,8 @@
                   android:layout_alignBottom="@id/iv_ig"
                   android:layout_marginBottom="4dp"
                   android:layout_marginLeft="111dp"
-                  android:layout_toEndOf="@id/iv_ig"
+                  android:layout_alignParentRight="true"
+                  android:layout_marginRight="6dp"
                   android:background="@drawable/button"
                   android:foreground="@drawable/ripple_white"
                   android:padding="8dp"
@@ -316,7 +316,6 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_alignLeft="@id/iv_ig"
-                  android:layout_marginTop="14dp"
                   android:src="@drawable/ic_favorite_orange_36dp" />
 
               <TextView
@@ -339,7 +338,6 @@
                   android:layout_height="wrap_content"
                   android:layout_alignBottom="@id/iv_ig"
                   android:layout_alignRight="@id/iv_ig"
-                  android:layout_marginBottom="15dp"
 
                   android:src="@drawable/ic_fullscreen_white_24dp" />
 
