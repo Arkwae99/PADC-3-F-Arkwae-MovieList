@@ -1,349 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp">
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:weightSum="3"
-      android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rl_fg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-      <android.support.v7.widget.CardView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:cardElevation="4dp"
-          android:layout_margin="8dp"
-          android:layout_weight="1">
+        <ImageView
+            android:id="@+id/iv_forest_gump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/forest_gump" />
 
-          <RelativeLayout
-              android:id="@+id/rl_fg"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/iv_forest_gump"
+            android:text="Forrest Gump"
+            android:textColor="@color/primary_text"
+            android:textSize="18sp" />
 
-              <ImageView
-                  android:id="@+id/iv_forest_gump"
-                  android:layout_width="wrap_content"
-                  android:layout_height="250dp"
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_movie_name"
+            android:layout_below="@id/tv_movie_name"
+            android:text="(Drama)"
+            android:textColor="@color/primary_text"
+            android:textStyle="bold" />
 
-                  android:layout_alignParentStart="true"
-                  android:layout_alignParentTop="true"
-                  android:src="@drawable/forest_gump" />
+        <TextView
+            android:id="@+id/tv_popularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_category"
+            android:layout_below="@id/tv_category"
+            android:text="Current Popularity"
+            android:textColor="@color/primary_text" />
 
-              <TextView
-                  android:id="@+id/tv_movie_name"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginLeft="8dp"
-                  android:layout_marginTop="8dp"
-                  android:layout_toRightOf="@id/iv_forest_gump"
-                  android:text="Forrest Gump"
-                  android:textColor="@color/primary_text"
-                  android:textSize="16sp" />
+        <RatingBar
+            android:id="@+id/rb_rating"
+            style="?attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_popularity"
+            android:layout_below="@id/tv_popularity"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="4.5" />
 
-              <TextView
-                  android:id="@+id/tv_category"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/btn_movie_review"
+            android:layout_width="150dp"
+            android:layout_height="37dp"
+            android:layout_alignBottom="@id/iv_forest_gump"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="111dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/button"
+            android:foreground="@drawable/ripple_white"
+            android:padding="8dp"
+            android:text="Movie Review"
+            android:textAllCaps="false"
+            android:textColor="#ffffff" />
 
-                  android:layout_alignLeft="@id/tv_movie_name"
-                  android:layout_below="@id/tv_movie_name"
-                  android:text="(Drama)"
-                  android:textColor="@color/primary_text"
-                  android:textStyle="bold" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-              <TextView
-                  android:id="@+id/tv_popularity"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/iv_heart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/iv_forest_gump"
+                android:src="@drawable/ic_favorite_orange_36dp" />
 
-                  android:layout_alignLeft="@id/tv_category"
-                  android:layout_below="@id/tv_category"
-                  android:text="Current Popularity"
-                  android:textColor="@color/primary_text" />
+            <TextView
+                android:id="@+id/tv_movie_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="4.5"
+                android:textColor="#ffffff"
+                android:textSize="12sp" />
+        </FrameLayout>
 
-              <RatingBar
-                  android:id="@+id/rb_rating"
-                  style="?attr/ratingBarStyleIndicator"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignLeft="@id/tv_popularity"
-                  android:layout_below="@id/tv_popularity"
-                  android:isIndicator="true"
-                  android:numStars="5"
-                  android:rating="4.5" />
-
-              <Button
-                  android:id="@+id/btn_movie_review"
-                  android:layout_width="150dp"
-                  android:layout_height="37dp"
-                  android:layout_alignBottom="@id/iv_forest_gump"
-                  android:layout_alignParentRight="true"
-                  android:layout_marginBottom="4dp"
-                  android:layout_marginLeft="111dp"
-                  android:layout_marginRight="6dp"
-                  android:background="@drawable/button"
-                  android:foreground="@drawable/ripple_white"
-                  android:padding="8dp"
-                  android:text="Movie Review"
-                  android:textAllCaps="false"
-                  android:textColor="#ffffff" />
-
-              <ImageView
-                  android:id="@+id/iv_heart"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignLeft="@id/iv_forest_gump"
-                  android:src="@drawable/ic_favorite_orange_36dp" />
-
-              <TextView
-                  android:id="@+id/tv_movie_rating"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignBottom="@id/iv_heart"
-                  android:layout_alignLeft="@id/iv_heart"
-                  android:layout_alignRight="@id/iv_heart"
-                  android:layout_alignTop="@id/iv_heart"
-                  android:gravity="center"
-                  android:padding="2dp"
-                  android:text="4.5"
-                  android:textColor="#ffffff"
-                  android:textSize="12sp" />
-
-              <ImageView
-                  android:id="@+id/btn_fullscreen"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignBottom="@id/iv_forest_gump"
-                  android:layout_alignRight="@id/iv_forest_gump"
-                  android:src="@drawable/ic_fullscreen_white_24dp" />
-
-
-          </RelativeLayout>
-      </android.support.v7.widget.CardView>
-      <android.support.v7.widget.CardView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:cardElevation="4dp"
-          android:layout_margin="8dp"
-          android:layout_weight="1">
-
-          <RelativeLayout
-              android:id="@+id/rl_bs"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-
-              <ImageView
-                  android:id="@+id/iv_bs"
-                  android:layout_width="wrap_content"
-                  android:layout_height="250dp"
-
-                  android:src="@drawable/boy_in_striped_pajamas" />
-
-              <TextView
-                  android:id="@+id/tv_movie_name1"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginLeft="8dp"
-                  android:layout_marginTop="8dp"
-                  android:layout_toRightOf="@id/iv_bs"
-                  android:text="The Boy In The Striped Pajamas"
-                  android:textColor="@color/primary_text"
-                  android:textSize="16sp" />
-
-              <TextView
-                  android:id="@+id/tv_category1"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-
-                  android:layout_alignLeft="@id/tv_movie_name1"
-                  android:layout_below="@id/tv_movie_name1"
-                  android:text="(Drama)"
-                  android:textColor="@color/primary_text"
-                  android:textStyle="bold" />
-
-              <TextView
-                  android:id="@+id/tv_popularity1"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-
-                  android:layout_alignLeft="@id/tv_category1"
-                  android:layout_below="@id/tv_category1"
-                  android:text="Current Popularity"
-                  android:textColor="@color/primary_text" />
-
-              <RatingBar
-                  android:id="@+id/rb_rating1"
-                  style="?attr/ratingBarStyleIndicator"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignLeft="@id/tv_popularity1"
-                  android:layout_below="@id/tv_popularity1"
-                  android:isIndicator="true"
-                  android:numStars="5"
-                  android:rating="5" />
-
-              <Button
-                  android:id="@+id/btn_movie_review1"
-                  android:layout_width="150dp"
-                  android:layout_height="37dp"
-                  android:layout_alignBottom="@id/iv_bs"
-                  android:layout_marginBottom="4dp"
-                  android:layout_marginLeft="111dp"
-                  android:layout_alignParentRight="true"
-                  android:layout_marginRight="6dp"
-                  android:background="@drawable/button"
-                  android:foreground="@drawable/ripple_white"
-                  android:padding="8dp"
-                  android:text="Movie Review"
-                  android:textAllCaps="false"
-                  android:textColor="#ffffff" />
-
-              <ImageView
-                  android:id="@+id/iv_heart1"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignLeft="@id/iv_bs"
-
-                  android:src="@drawable/ic_favorite_orange_36dp" />
-
-              <TextView
-                  android:id="@+id/tv_movie_rating1"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignBottom="@id/iv_heart1"
-                  android:layout_alignLeft="@id/iv_heart1"
-                  android:layout_alignRight="@id/iv_heart1"
-                  android:layout_alignTop="@id/iv_heart1"
-                  android:gravity="center"
-                  android:padding="2dp"
-                  android:text="5"
-                  android:textColor="#ffffff"
-                  android:textSize="12sp" />
-              <ImageView
-                  android:id="@+id/btn_fullscreen1"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignBottom="@id/iv_bs"
-                  android:layout_alignRight="@id/iv_bs"
-
-                  android:src="@drawable/ic_fullscreen_white_24dp" />
-
-
-          </RelativeLayout>
-      </android.support.v7.widget.CardView>
-      <android.support.v7.widget.CardView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          app:cardElevation="4dp"
-          android:layout_margin="8dp"
-          android:layout_weight="1">
-
-          <RelativeLayout
-              android:id="@+id/rl_ig"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-
-              <ImageView
-                  android:id="@+id/iv_ig"
-                  android:layout_width="wrap_content"
-                  android:layout_height="250dp"
-
-                  android:src="@drawable/the_imitation_game" />
-
-              <TextView
-                  android:id="@+id/tv_movie_name2"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginLeft="8dp"
-                  android:layout_marginTop="8dp"
-                  android:layout_toRightOf="@id/iv_ig"
-                  android:text="The Imitation Game"
-                  android:textColor="@color/primary_text"
-                  android:textSize="16sp" />
-
-              <TextView
-                  android:id="@+id/tv_category2"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-
-                  android:layout_alignLeft="@id/tv_movie_name2"
-                  android:layout_below="@id/tv_movie_name2"
-                  android:text="(Drama , Science)"
-                  android:textColor="@color/primary_text"
-                  android:textStyle="bold" />
-
-              <TextView
-                  android:id="@+id/tv_popularity2"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-
-                  android:layout_alignLeft="@id/tv_category2"
-                  android:layout_below="@id/tv_category2"
-                  android:text="Current Popularity"
-                  android:textColor="@color/primary_text" />
-
-              <RatingBar
-                  android:id="@+id/rb_rating2"
-                  style="?attr/ratingBarStyleIndicator"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignLeft="@id/tv_popularity2"
-                  android:layout_below="@id/tv_popularity2"
-                  android:isIndicator="true"
-                  android:numStars="5"
-                  android:rating="4.5" />
-
-              <Button
-                  android:id="@+id/btn_movie_review2"
-                  android:layout_width="150dp"
-                  android:layout_height="37dp"
-                  android:layout_alignBottom="@id/iv_ig"
-                  android:layout_marginBottom="4dp"
-                  android:layout_marginLeft="111dp"
-                  android:layout_alignParentRight="true"
-                  android:layout_marginRight="6dp"
-                  android:background="@drawable/button"
-                  android:foreground="@drawable/ripple_white"
-                  android:padding="8dp"
-                  android:text="Movie Review"
-                  android:textAllCaps="false"
-                  android:textColor="#ffffff" />
-
-              <ImageView
-                  android:id="@+id/iv_heart2"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignLeft="@id/iv_ig"
-                  android:src="@drawable/ic_favorite_orange_36dp" />
-
-              <TextView
-                  android:id="@+id/tv_movie_rating2"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignBottom="@id/iv_heart2"
-                  android:layout_alignLeft="@id/iv_heart2"
-                  android:layout_alignRight="@id/iv_heart2"
-                  android:layout_alignTop="@id/iv_heart2"
-                  android:gravity="center"
-                  android:padding="2dp"
-                  android:text="4.5"
-                  android:textColor="#ffffff"
-                  android:textSize="12sp" />
-
-              <ImageView
-                  android:id="@+id/btn_fullscreen2"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignBottom="@id/iv_ig"
-                  android:layout_alignRight="@id/iv_ig"
-
-                  android:src="@drawable/ic_fullscreen_white_24dp" />
-
-          </RelativeLayout>
-      </android.support.v7.widget.CardView>
-
-
-  </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+        <ImageView
+            android:id="@+id/btn_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_forest_gump"
+            android:layout_alignRight="@id/iv_forest_gump"
+            android:src="@drawable/ic_fullscreen_white_24dp" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
