@@ -9,14 +9,14 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:background="@drawable/forrest_gump_bg">
+        android:background="@drawable/forrest_gump_bg"
+        android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="360dp"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/colorPrimary">
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
             <RelativeLayout
@@ -54,9 +54,9 @@
                     android:id="@+id/btn_movie_details_fullscreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
                     android:layout_alignBottom="@id/iv_movie_poster"
                     android:layout_alignRight="@id/iv_movie_poster"
+                    android:background="#915a5858"
                     android:src="@drawable/ic_fullscreen_white_24dp" />
 
 
@@ -68,26 +68,29 @@
                     android:layout_marginRight="6dp"
                     android:layout_marginTop="20dp"
                     android:layout_toRightOf="@id/iv_movie_poster"
-                    android:textStyle="bold"
                     android:text="You'll Never Know What You're Capable Of If You Don't Try."
                     android:textColor="@color/white_full"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
 
+                <android.support.v4.widget.NestedScrollView
+                    android:id="@+id/sv_movie_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_alignLeft="@id/tv_movie_description"
+                    android:layout_below="@id/tv_movie_description"
+                    android:layout_marginRight="6dp"
+                    android:layout_toEndOf="@id/tv_released_date"
+                    android:scrollbars="vertical">
 
                     <TextView
-                        android:id="@+id/tv_movie_description_details"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxLines="7"
-                        android:scrollbars="vertical"
-                        android:layout_marginRight="6dp"
-                        android:layout_alignLeft="@id/tv_movie_description"
-                        android:layout_below="@id/tv_movie_description"
-                        android:layout_toRightOf="@id/fl_poster_rating_fullscreen"
-                        android:text="In 1981, Forrest Gump recounts his life story to strangers who sit next to him on a bench in Savannah, Georgia.In the present, Forrest reveals that he is waiting at the bus stop because he received a letter from Jenny who, having seen him run on television, asked him to visit her. Reunited with Jenny, she introduces him to his son, named Forrest Gump, Jr. Jenny tells Forrest she is sick with an unknown virus. The three move back to Greenbow, Alabama. Jenny and Forrest finally marry but she dies a year later. Forrest and his son await the school bus on Forrest Jr.'s first day of school."
-                        android:textColor="@color/white_full"
+                        android:text="@string/movie_short_details"
+                        android:textColor="#ffffff"
                         android:textSize="16sp" />
+                </android.support.v4.widget.NestedScrollView>
 
 
                 <RatingBar
@@ -152,23 +155,31 @@
                 android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/tv_movie_genre"
+            <!--<TextView-->
+                <!--android:id="@+id/tv_movie_genre"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:layout_below="@+id/tv_movie_title"-->
+                <!--android:layout_marginStart="16dp"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:padding="4dp"-->
+                <!--android:text="Drama" />-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_movie_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_movie_title"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="6dp"
-                android:background="@color/colorPrimary"
-                android:padding="4dp"
-                android:text="Drama" />
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_movie_title"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"></android.support.v7.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/tv_movie_length"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tv_movie_genre"
-                android:layout_below="@id/tv_movie_genre"
+                android:layout_alignLeft="@id/rv_movie_genre"
+                android:layout_below="@id/rv_movie_genre"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/border"
                 android:padding="8dp"
@@ -179,7 +190,6 @@
                 android:id="@+id/rv_movie_trailers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tv_movie_genre"
                 android:layout_below="@+id/tv_movie_length"
                 android:layout_marginTop="8dp"
                 android:fitsSystemWindows="true"></android.support.v7.widget.RecyclerView>
@@ -188,7 +198,7 @@
                 android:id="@+id/tv_review_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tv_movie_genre"
+                android:layout_alignLeft="@id/rv_movie_genre"
                 android:layout_below="@id/rv_movie_trailers"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
@@ -196,17 +206,25 @@
                 android:textColor="@color/white_full"
                 android:textSize="24sp" />
 
-            <TextView
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignLeft="@id/rv_movie_genre"-->
+                <!--android:layout_below="@id/tv_review_title"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:layout_marginRight="8dp"-->
+                <!--android:layout_marginTop="4dp"-->
+                <!--android:lineSpacingMultiplier="1.2"-->
+                <!--android:text="@string/movie_reviews"-->
+                <!--android:textColor="@color/white_full"-->
+                <!--android:textSize="14sp" />-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_movie_reviews"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tv_movie_genre"
+                android:layout_height="match_parent"
                 android:layout_below="@id/tv_review_title"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="4dp"
-                android:lineSpacingMultiplier="1.2"
-                android:text="@string/movie_reviews"
-                android:textColor="@color/white_full"
-                android:textSize="14sp" />
+                android:layout_alignLeft="@id/rv_movie_genre"
+                android:layout_marginBottom="20dp"></android.support.v7.widget.RecyclerView>
 
 
         </RelativeLayout>

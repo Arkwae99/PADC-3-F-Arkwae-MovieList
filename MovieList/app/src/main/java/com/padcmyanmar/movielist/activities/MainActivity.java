@@ -1,5 +1,6 @@
 package com.padcmyanmar.movielist.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,14 +14,17 @@ import android.view.MenuItem;
 
 import com.padcmyanmar.movielist.R;
 import com.padcmyanmar.movielist.adapters.MovieAdapter;
+import com.padcmyanmar.movielist.delegates.MoviesActionDelegate;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class    MainActivity extends AppCompatActivity implements MoviesActionDelegate {
     @BindView(R.id.rv_movies)
     RecyclerView recyclerView;
 
     private MovieAdapter movieAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        movieAdapter=new MovieAdapter();
+        movieAdapter=new MovieAdapter(this);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(movieAdapter);
@@ -65,5 +69,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTapMovies() {
+        Intent intent = new Intent(getApplicationContext(), MovieDetailsActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onTapMovieReviewBtn() {
+
     }
 }
