@@ -8,20 +8,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.padcmyanmar.movielist.MovieListApp;
 import com.padcmyanmar.movielist.R;
 import com.padcmyanmar.movielist.adapters.MovieAdapter;
+import com.padcmyanmar.movielist.data.models.MoviesModel;
 import com.padcmyanmar.movielist.delegates.MoviesActionDelegate;
+import com.padcmyanmar.movielist.events.LoadedMoviesEvent;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class    MainActivity extends AppCompatActivity implements MoviesActionDelegate {
+public class MainActivity extends AppCompatActivity implements MoviesActionDelegate {
     @BindView(R.id.rv_movies)
-    RecyclerView recyclerView;
+    RecyclerView rvMovies;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
 
     private MovieAdapter movieAdapter;
 
@@ -31,22 +46,34 @@ public class    MainActivity extends AppCompatActivity implements MoviesActionDe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this,this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        setSupportActionBar(    toolbar);
         movieAdapter=new MovieAdapter(this);
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(movieAdapter);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext(),
+                LinearLayoutManager.VERTICAL, false);
+        rvMovies.setLayoutManager(linearLayoutManager);
+        rvMovies.setAdapter(movieAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Search options are coming soon!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Search options are coming soon!", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
+        MoviesModel.getsObjectInstance().loadMovies();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -71,6 +98,12 @@ public class    MainActivity extends AppCompatActivity implements MoviesActionDe
         return super.onOptionsItemSelected(item);
     }
 
+    @OnClick(R.id.fab)
+    public void onTapFab(View view) {
+        Snackbar.make(view, "Replace with your own action - ButterKnife", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+
     @Override
     public void onTapMovies() {
         Intent intent = new Intent(getApplicationContext(), MovieDetailsActivity.class);
@@ -80,5 +113,11 @@ public class    MainActivity extends AppCompatActivity implements MoviesActionDe
     @Override
     public void onTapMovieReviewBtn() {
 
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMoviesLoaded(LoadedMoviesEvent event){
+        Log.d(MovieListApp.LOG_TAG,"onMoviesLoad : "+ event.getMoviesList().size());
+        movieAdapter.setMovies(event.getMoviesList());
     }
 }

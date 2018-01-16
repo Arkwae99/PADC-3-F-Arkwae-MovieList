@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.method.ScrollingMovementMethod;
-import android.widget.TextView;
 
 import com.padcmyanmar.movielist.R;
 import com.padcmyanmar.movielist.adapters.MovieGenreAdapter;
